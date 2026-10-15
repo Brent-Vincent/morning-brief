@@ -34,6 +34,8 @@ jobs:
         run: |
           mkdir -p dist/data
           cp index.html app.js styles.css dist/
+          cp manifest.webmanifest install.js sw.js dist/
+          cp -R icons dist/icons
           cp data/headlines.json dist/data/
           touch dist/.nojekyll
       - name: Configure GitHub Pages

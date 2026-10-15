@@ -6,8 +6,13 @@
   <meta name="theme-color" content="#f7f6f2">
   <meta name="description" content="Morning Brief: a personalized daily news dashboard built from trusted RSS headlines.">
   <title>Morning Brief — Your personal news desk</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Morning Brief">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
+  <script src="./install.js" defer></script>
 </head>
 <body>
   <div class="shell">
@@ -40,6 +45,11 @@
       </header>
 
       <main class="content">
+        <div class="notice" id="installNotice" hidden>
+          <span>Keep Morning Brief on your home screen.</span>
+          <button type="button" class="plain-primary" id="installApp">Install app</button>
+          <span id="installHelp" hidden>On iPhone, open in Safari, tap Share, then Add to Home Screen. On Android, open the browser menu and choose Install app or Add to Home screen.</span>
+        </div>
         <div class="intro-grid">
           <section class="intro-copy">
             <div class="eyebrow"><span class="eyebrow-line"></span> THE DAILY INTELLIGENCE BRIEF</div>

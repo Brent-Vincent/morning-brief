@@ -11,7 +11,11 @@ A polished HTML news dashboard that fetches RSS headlines every morning and lear
 - Builds a static website using GitHub Actions at approximately **04:37 Asia/Jakarta time** each day and hosts it on GitHub Pages.
 - Starts with **clearly labeled demonstration headlines** until the first successful live fetch. Demo titles are examples, not actual news.
 
-## Preview right now
+## Install on your phone
+
+Open https://brent-vincent.github.io/morning-brief/ on your phone. On iPhone, use Safari's Share menu, then **Add to Home Screen**. On Android, tap **Install app** on the page, or use Chrome's menu and choose **Install app** / **Add to Home screen**. The installed app opens in its own window. After one online visit, the last successfully loaded headlines remain available offline; reconnect to get a newer edition. This is a web app, so no app-store download is required.
+
+## Local preview
 
 Double-click `index.html` to preview the design with demo headlines. To use actual local news data, open a terminal in this folder:
 
