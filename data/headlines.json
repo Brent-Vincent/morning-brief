@@ -1,0 +1,15 @@
+{
+  "generated_at": null,
+  "demo": true,
+  "feed_count": 0,
+  "articles": [
+    {"id":"demo-1","title":"Example headline: The day's biggest international developments","url":"https://www.bbc.com/news/world","source":"BBC News (sample)","topic":"World","published":"2026-10-15T02:10:00Z"},
+    {"id":"demo-2","title":"Example headline: The technology stories people are talking about","url":"https://www.bbc.com/news/technology","source":"BBC News (sample)","topic":"Technology","published":"2026-10-15T01:30:00Z"},
+    {"id":"demo-3","title":"Example headline: What's happening in Indonesia today","url":"https://news.google.com/?hl=en-US&gl=ID&ceid=ID:en","source":"Google News (sample)","topic":"Indonesia","published":"2026-10-15T01:20:00Z"},
+    {"id":"demo-4","title":"Example headline: A new chapter for artificial intelligence","url":"https://news.google.com/search?q=artificial%20intelligence","source":"Google News (sample)","topic":"AI","published":"2026-10-15T00:55:00Z"},
+    {"id":"demo-5","title":"Example headline: Markets and business in focus","url":"https://www.bbc.com/news/business","source":"BBC News (sample)","topic":"Business","published":"2026-10-14T23:30:00Z"},
+    {"id":"demo-6","title":"Example headline: What scientists discovered this week","url":"https://www.bbc.com/news/science_and_environment","source":"BBC News (sample)","topic":"Science","published":"2026-10-14T22:00:00Z"},
+    {"id":"demo-7","title":"Example headline: The latest in health and wellness research","url":"https://www.bbc.com/news/health","source":"BBC News (sample)","topic":"Health","published":"2026-10-14T21:30:00Z"},
+    {"id":"demo-8","title":"Example headline: Behind the scenes in the film industry","url":"https://www.bbc.com/news/entertainment_and_arts","source":"BBC News (sample)","topic":"Entertainment","published":"2026-10-14T20:20:00Z"}
+  ]
+}
