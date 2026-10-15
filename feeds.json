@@ -4,6 +4,11 @@
   "max_total": 250,
   "feeds": [
     {
+      "name": "Google News: US Politics",
+      "topic": "US Politics",
+      "url": "https://news.google.com/rss/search?q=US+politics+when%3A2d&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
       "name": "BBC World",
       "topic": "World",
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
