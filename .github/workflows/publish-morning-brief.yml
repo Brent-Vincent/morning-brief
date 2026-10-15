@@ -1,0 +1,55 @@
+name: Publish Morning Brief
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # 21:37 UTC = 04:37 WIB (Jakarta) the following day.
+    # GitHub Actions schedules are best-effort, not guaranteed to run on time.
+    - cron: "37 21 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: morning-brief-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch latest headlines
+        run: python3 scripts/update_news.py
+      - name: Prepare website
+        run: |
+          mkdir -p dist/data
+          cp index.html app.js styles.css dist/
+          cp data/headlines.json dist/data/
+          touch dist/.nojekyll
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
