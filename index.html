@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="Morning Brief: a personalized daily news dashboard built from trusted RSS headlines.">
+  <title>Morning Brief — Your personal news desk</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span class="sun-core"></span><span class="sunline sunline-a"></span><span class="sunline sunline-b"></span></div>
+        <div><div class="brand-title">MORNING<br>BRIEF<span class="brand-dot">.</span></div><div class="brand-caption">THE PERSONAL EDITION</div></div>
+      </div>
+
+      <div class="sidebar-section-label">YOUR DESK</div>
+      <nav id="mainNav" class="nav-stack">
+        <button type="button" class="nav-item selected" data-view="for-you"><span class="nav-symbol">✳</span><span>For You</span><span class="nav-arrow">↗</span></button>
+        <button type="button" class="nav-item" data-view="latest"><span class="nav-symbol">◷</span><span>Latest headlines</span></button>
+        <button type="button" class="nav-item" data-view="saved"><span class="nav-symbol">♧</span><span>Reading list</span><span class="nav-count" id="savedCount">0</span></button>
+      </nav>
+
+      <div class="sidebar-section-label topics-label">TOPICS <span>FILTER</span></div>
+      <nav id="topicNav" class="nav-stack topic-nav" aria-label="Filter by topic"></nav>
+
+      <div class="sidebar-bottom">
+        <div class="side-note"><span class="tiny-sun">☀</span><span>Less scrolling.<br><strong>More perspective.</strong></span></div>
+        <button type="button" class="side-settings" id="openSettingsSide"><span>⚙</span> Customize my feed <span aria-hidden="true">↗</span></button>
+      </div>
+    </aside>
+
+    <div class="main-layout">
+      <header class="topbar">
+        <div class="topbar-breadcrumb">PERSONAL NEWSROOM <span>/</span> <strong id="viewBreadcrumb">FOR YOU</strong></div>
+        <div class="topbar-right"><span class="live-dot"></span><span id="topbarEdition">YOUR DAILY EDITION</span><button type="button" class="icon-button" id="settingsTop" aria-label="Open preferences" title="Customize your feed">⚙</button></div>
+      </header>
+
+      <main class="content">
+        <div class="intro-grid">
+          <section class="intro-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> THE DAILY INTELLIGENCE BRIEF</div>
+            <h1 id="greeting">Good morning<span class="title-dot">.</span></h1>
+            <p class="hero-subtitle">The news that matters to <em>you.</em><br><span>Less noise. More signal.</span></p>
+            <div class="date-row"><span id="todayDate">TODAY</span><span class="date-separator">•</span><span id="dateTimezone">JAKARTA EDITION</span></div>
+          </section>
+          <section class="hero-card" aria-label="Your morning overview">
+            <div class="hero-card-top"><span class="hero-icon">✳</span><span>YOUR DAILY SIGNAL</span><span class="hero-card-number">/ 01</span></div>
+            <div class="hero-card-center"><span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span><span class="hero-orbit orbit-three"></span><span class="hero-sun"></span></div>
+            <div class="hero-card-bottom"><div><span class="stat-number" id="totalStories">—</span><span class="stat-label">HEADLINES</span></div><div><span class="stat-number" id="sourceCount">—</span><span class="stat-label">SOURCES</span></div><div><span class="stat-number" id="ratingCount">0</span><span class="stat-label">YOUR RATINGS</span></div></div>
+          </section>
+        </div>
+
+        <div id="demoNotice" class="notice" hidden><span class="notice-icon">ⓘ</span><span><strong>Preview mode.</strong> These are example headlines, not current news. The site will show real RSS articles after its first successful scheduled build.</span></div>
+        <div id="errorNotice" class="notice notice-error" hidden><span class="notice-icon">!</span><span id="errorMessage"></span></div>
+
+        <section class="news-layout">
+          <div class="news-panel">
+            <div class="section-top"><div><div class="section-kicker"><span class="mini-rule"></span> YOUR HEADLINES</div><h2 id="sectionTitle">Picked for you<span class="title-dot">.</span></h2></div><button type="button" id="refreshButton" class="refresh-link" title="Check for a newer published edition"><span>↻</span> Refresh edition</button></div>
+            <div class="toolbar"><div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Search today's headlines" aria-label="Search headlines"></div><select id="timeFilter" aria-label="How recent should stories be"><option value="0">Any date</option><option value="24">Last 24 hours</option><option value="72">Last 3 days</option><option value="168">Last 7 days</option></select><span class="toolbar-count" id="resultCount">— STORIES</span></div>
+            <div id="articleList" class="article-list" aria-live="polite"></div>
+            <div id="emptyState" class="empty-state" hidden><div class="empty-symbol">◌</div><h3>Nothing in this view yet.</h3><p>Try changing the topic, search or age filter. You can also customize which categories you follow.</p><button type="button" class="plain-primary" id="emptySettings">Adjust preferences →</button></div>
+            <button type="button" class="load-more" id="loadMore" hidden>Show more stories <span>↓</span></button>
+            <div class="article-list-footer"><span>HEADLINES ONLY · LINKS OPEN SOURCE ARTICLES OR GOOGLE NEWS</span><span id="lastUpdated">UPDATE PENDING</span></div>
+          </div>
+
+          <aside class="right-rail" aria-label="Your news preferences summary">
+            <section class="rail-card profile-card"><div class="rail-icon">◎</div><div class="rail-overline">THE ALGORITHM, EXPLAINED</div><h3>It gets better<br>with you.</h3><p>Use <strong>More like this</strong> or <strong>Less like this</strong> on headlines. Your choices influence what appears first.</p><div id="tasteBars" class="taste-bars"></div><button type="button" class="rail-link" id="openSettingsRail">Fine-tune your interests <span>↗</span></button></section>
+            <section class="rail-card mini-card"><div class="small-icon">↗</div><h3>Be curious.</h3><p>Choose <strong>Latest headlines</strong> to browse without personalized ranking.</p></section>
+            <section class="privacy-note"><span class="lock-mark">⌑</span><span>Your likes, clicks and preferences stay in <strong>this browser</strong>. No account or tracking service required.</span></section>
+          </aside>
+        </section>
+
+        <footer class="footer"><span>© MORNING BRIEF <span id="footerYear">2026</span></span><span>BUILT FOR CURIOUS MINDS · <button type="button" id="footerHow">HOW IT WORKS ↗</button></span></footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="settings-backdrop" id="settingsBackdrop" hidden></div>
+  <aside class="settings-drawer" id="settingsDrawer" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" aria-hidden="true">
+    <div class="settings-header"><div><span class="section-kicker">MAKE IT YOURS</span><h2 id="settingsTitle">Your preferences<span class="title-dot">.</span></h2></div><button type="button" class="close-drawer" id="closeSettings" aria-label="Close preferences">✕</button></div>
+    <div class="settings-body">
+      <p class="settings-description">Your Morning Brief adapts to your reading habits. Start by choosing the topics you want, then fine-tune the ranking.</p>
+      <section class="settings-section"><h3>Topics you follow</h3><p>Only headlines from enabled topics appear in your feed.</p><div class="topic-settings" id="topicSettings"></div></section>
+      <section class="settings-section"><h3>Priorities</h3><p>Tell the feed which topics you want to see near the top.</p><div class="priority-settings" id="prioritySettings"></div></section>
+      <section class="settings-section"><h3>Preferred publishers</h3><p>Uncheck a publisher to hide its articles. This list comes from currently available headlines.</p><div class="source-settings" id="sourceSettings"></div></section>
+      <section class="settings-section"><h3>Words to boost</h3><p>Comma-separated subjects you want to hear more about. They boost matching collected headlines; they do not create new feeds.</p><textarea id="boostKeywords" rows="2" placeholder="e.g. space exploration, electric cars, filmmaking"></textarea></section>
+      <section class="settings-section"><h3>Words to block</h3><p>Matching headlines are removed from your feed.</p><textarea id="blockKeywords" rows="2" placeholder="e.g. celebrity gossip, spoilers"></textarea></section>
+      <section class="settings-section"><h3>Feed controls</h3><label class="toggle-row"><span>Hide already opened stories</span><input type="checkbox" id="hideRead"></label><label class="toggle-row"><span>Headlines shown at once</span><select id="pageSize"><option value="10">10</option><option value="20">20</option><option value="40">40</option></select></label></section>
+      <section class="settings-section"><h3>Your learning history</h3><p id="learningSummary">No preferences learned yet.</p><div class="data-actions"><button type="button" id="exportPrefs">Export</button><button type="button" id="importPrefs">Import</button><input type="file" id="importFile" accept="application/json,.json" hidden><button type="button" id="resetPrefs" class="danger-button">Reset learning</button></div></section>
+      <div class="settings-footnote">To add brand-new publishers or search queries, edit <code>feeds.json</code> with Codex and redeploy.</div>
+    </div>
+    <div class="settings-footer"><button type="button" class="save-button" id="saveSettings">Save my preferences <span>→</span></button></div>
+  </aside>
+</body>
+</html>

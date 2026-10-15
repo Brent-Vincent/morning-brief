@@ -1,0 +1,47 @@
+{
+  "description": "Edit this file to choose which sources and topics Morning Brief collects. Add any publicly accessible RSS/Atom feed using a new name/topic/url entry.",
+  "max_per_feed": 28,
+  "max_total": 250,
+  "feeds": [
+    {
+      "name": "BBC World",
+      "topic": "World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "name": "BBC Business",
+      "topic": "Business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+    },
+    {
+      "name": "BBC Technology",
+      "topic": "Technology",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    },
+    {
+      "name": "BBC Science",
+      "topic": "Science",
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
+    },
+    {
+      "name": "Google News: Indonesia",
+      "topic": "Indonesia",
+      "url": "https://news.google.com/rss/search?q=Indonesia+when%3A2d&hl=en-US&gl=ID&ceid=ID:en"
+    },
+    {
+      "name": "Google News: AI",
+      "topic": "AI",
+      "url": "https://news.google.com/rss/search?q=artificial+intelligence+when%3A2d&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Google News: Health",
+      "topic": "Health",
+      "url": "https://news.google.com/rss/search?q=health+research+when%3A2d&hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+      "name": "Google News: Entertainment",
+      "topic": "Entertainment",
+      "url": "https://news.google.com/rss/search?q=film+and+entertainment+when%3A2d&hl=en-US&gl=US&ceid=US:en"
+    }
+  ]
+}
