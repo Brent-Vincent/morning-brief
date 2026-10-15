@@ -47,6 +47,8 @@ python3 -m unittest discover -s tests -v
 
 ## Customize the content
 
+In **Customize my feed → Appearance**, enable **High-contrast dark mode** and choose cyan, yellow, green, pink, white, or a custom color. Appearance changes save immediately on this device. Dark custom colors are brightened to keep accent text readable on the dark background.
+
 ### In the website (no code)
 
 Click **Customize my feed** / gear icon. You can:

@@ -11,6 +11,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Morning Brief">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./appearance.css">
+  <script src="./appearance.js"></script>
   <script src="./app.js" defer></script>
   <script src="./install.js" defer></script>
 </head>
@@ -94,6 +96,20 @@
     <div class="settings-header"><div><span class="section-kicker">MAKE IT YOURS</span><h2 id="settingsTitle">Your preferences<span class="title-dot">.</span></h2></div><button type="button" class="close-drawer" id="closeSettings" aria-label="Close preferences">✕</button></div>
     <div class="settings-body">
       <p class="settings-description">Your Morning Brief adapts to your reading habits. Start by choosing the topics you want, then fine-tune the ranking.</p>
+      <section class="settings-section appearance-settings">
+        <h3>Appearance</h3>
+        <label class="toggle-row"><span>High-contrast dark mode</span><input type="checkbox" id="contrastMode"></label>
+        <label class="toggle-row" for="contrastColor"><span>Choose your contrast color</span><input type="color" id="contrastColor" value="#80ffff"></label>
+        <div class="contrast-presets" aria-label="Contrast color presets">
+          <button type="button" data-contrast-color="#80ffff">Cyan</button>
+          <button type="button" data-contrast-color="#ffff66">Yellow</button>
+          <button type="button" data-contrast-color="#99ff99">Green</button>
+          <button type="button" data-contrast-color="#ffb3ff">Pink</button>
+          <button type="button" data-contrast-color="#ffffff">White</button>
+        </div>
+        <p id="contrastColorHelp" aria-live="polite"></p>
+        <p>Appearance updates immediately and saves automatically on this device.</p>
+      </section>
       <section class="settings-section"><h3>Topics you follow</h3><p>Only headlines from enabled topics appear in your feed.</p><div class="topic-settings" id="topicSettings"></div></section>
       <section class="settings-section"><h3>Priorities</h3><p>Tell the feed which topics you want to see near the top.</p><div class="priority-settings" id="prioritySettings"></div></section>
       <section class="settings-section"><h3>Preferred publishers</h3><p>Uncheck a publisher to hide its articles. This list comes from currently available headlines.</p><div class="source-settings" id="sourceSettings"></div></section>

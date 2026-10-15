@@ -1,7 +1,7 @@
-const CACHE_NAME = 'morning-brief-v1';
+const CACHE_NAME = 'morning-brief-v2';
 const ROOT = new URL('./', self.location.href);
 const HEADLINES = new URL('data/headlines.json', ROOT);
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'install.js', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png', 'data/headlines.json'];
+const SHELL = ['./', 'index.html', 'styles.css', 'appearance.css', 'appearance.js', 'app.js', 'install.js', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png', 'data/headlines.json'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(SHELL.map(path => new URL(path, ROOT).href))));

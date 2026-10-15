@@ -35,6 +35,7 @@ jobs:
           mkdir -p dist/data
           cp index.html app.js styles.css dist/
           cp manifest.webmanifest install.js sw.js dist/
+          cp appearance.css appearance.js dist/
           cp -R icons dist/icons
           cp data/headlines.json dist/data/
           touch dist/.nojekyll
